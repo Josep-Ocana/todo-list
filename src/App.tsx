@@ -1,6 +1,7 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Form from "./components/TodoForm";
 
 type Todo = {
   id: number;
@@ -14,24 +15,10 @@ function App() {
     return almacenados ? JSON.parse(almacenados) : [];
   };
   const [todos, setTodos] = useState<Todo[]>(initialState);
-  const [inputValue, setInputValue] = useState<string>("");
-  const [alerta, setAlerta] = useState<string>("");
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-    console.log(todos);
   }, [todos]);
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (inputValue === "") {
-      setAlerta("No puede estar el campo vacio");
-      return;
-    }
-    setAlerta("");
-    addTodo(inputValue);
-  };
 
   const addTodo = (tarea: string) => {
     const todo: Todo = {
@@ -40,7 +27,6 @@ function App() {
       completed: false,
     };
     setTodos([...todos, todo]);
-    setInputValue("");
   };
 
   const handleClick = (id: Todo["id"]) => {
@@ -63,30 +49,8 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className=" flex-grow w-full md:w-4/5 lg:w-1/2 mx-auto p-5 space-y-10">
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white shadow-lg rounded-lg p-5"
-          >
-            {alerta !== "" && (
-              <div className="bg-red-500 text-white p-3 rounded text-center uppercase text-sm font-bold">
-                {alerta}
-              </div>
-            )}
-            <div className="flex justify-between items-center">
-              <input
-                className=" p-3 border rounded-lg w-full "
-                placeholder="Que necesitas hacer?"
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-              />
-              <div className="">
-                <button className="bg-blue-500 text-white rounded-md w-40 ml-3 py-2">
-                  + Añadir
-                </button>
-              </div>
-            </div>
-          </form>
+          <Form addTodo={addTodo} />
+
           <div className="flex justify-between bg-white shadow-lg rounded-lg p-5 text-gray-700">
             <p>Total: {todos.length}</p>
             <p>Completadas: {todos.filter((todo) => todo.completed).length}</p>
