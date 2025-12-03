@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 type Todo = {
@@ -61,7 +62,7 @@ function App() {
     <>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className=" flex-grow max-w-3xl mx-auto p-10 space-y-8">
+        <main className=" flex-grow w-full md:w-4/5 lg:w-1/2 mx-auto p-5 space-y-10">
           <form
             onSubmit={handleSubmit}
             className="bg-white shadow-lg rounded-lg p-5"
@@ -134,9 +135,7 @@ function App() {
             </div>
           ))}
         </main>
-        <footer className="bg-gray-500 text-white p-4 text-center">
-          &copy; {new Date().getFullYear()} Todo List . Josep Ocaña Puigdevall.
-        </footer>
+        <Footer />
       </div>
     </>
   );
