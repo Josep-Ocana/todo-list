@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Stats from "./components/Stats";
 import Form from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import type { Todo } from "./types";
@@ -47,11 +48,7 @@ function App() {
         <main className=" flex-grow w-full md:w-4/5 lg:w-1/2 mx-auto p-5 space-y-10">
           <Form addTodo={addTodo} />
 
-          <div className="flex justify-between bg-white shadow-lg rounded-lg p-5 text-gray-700">
-            <p>Total: {todos.length}</p>
-            <p>Completadas: {todos.filter((todo) => todo.completed).length}</p>
-            <p>Pendientes: {todos.filter((todo) => !todo.completed).length}</p>
-          </div>
+          <Stats todos={todos} />
 
           <TodoList todos={todos} onToggle={onToggle} onDelete={onDelete} />
         </main>
