@@ -1,17 +1,14 @@
 import type { Todo } from "../types";
 
-type TodoProps = {
+type TodoItemProps = {
   todo: Todo;
   onToggle: (id: Todo["id"]) => void;
   onDelete: (id: Todo["id"]) => void;
 };
 
-const TodoItem = ({ todo, onToggle, onDelete }: TodoProps) => {
+const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
   return (
-    <div
-      key={todo.id}
-      className="flex justify-between place-items-center bg-white shadow-lg rounded-lg p-5"
-    >
+    <div className="flex justify-between place-items-center bg-white shadow-lg rounded-lg p-3">
       <button onClick={() => onToggle(todo.id)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Form from "./components/TodoForm";
-import TodoItem from "./components/TodoItem";
+import TodoList from "./components/TodoList";
 import type { Todo } from "./types";
 
 function App() {
@@ -52,15 +52,8 @@ function App() {
             <p>Completadas: {todos.filter((todo) => todo.completed).length}</p>
             <p>Pendientes: {todos.filter((todo) => !todo.completed).length}</p>
           </div>
-          {/* Seccion tareas */}
-          {todos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={onToggle}
-              onDelete={onDelete}
-            />
-          ))}
+
+          <TodoList todos={todos} onToggle={onToggle} onDelete={onDelete} />
         </main>
         <Footer />
       </div>
