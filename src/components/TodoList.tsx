@@ -9,11 +9,15 @@ type TodoListProps = {
 
 const TodoList = ({ todos, onToggle, onDelete }: TodoListProps) => {
   return (
-    <div className="space-y-8">
-      {todos.length < 0 ? (
-        <p> No tienes ninguna tarea</p>
+    <div>
+      {todos.length === 0 ? (
+        <p className="bg-white shadow-lg rounded-lg p-5 text-lg text-center">
+          {" "}
+          No tienes ninguna{" "}
+          <span className="text-sky-600 font-black">tarea</span>{" "}
+        </p>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {todos.map((todo) => (
             <TodoItem
               key={todo.id}

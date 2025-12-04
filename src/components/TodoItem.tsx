@@ -8,7 +8,7 @@ type TodoItemProps = {
 
 const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
   return (
-    <div className="flex justify-between place-items-center bg-white shadow-lg rounded-lg p-3">
+    <div className="flex justify-between place-items-center bg-white shadow-lg rounded-lg p-1">
       <button onClick={() => onToggle(todo.id)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,6 +28,7 @@ const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
       >
         {todo.text}
       </p>
+
       <button
         onClick={() => onDelete(todo.id)}
         className=" text-red-500 p-2 uppercase font-bold"

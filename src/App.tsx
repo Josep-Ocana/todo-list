@@ -11,6 +11,7 @@ function App() {
     const almacenados = localStorage.getItem("todos");
     return almacenados ? JSON.parse(almacenados) : [];
   };
+
   const [todos, setTodos] = useState<Todo[]>(initialState);
 
   useEffect(() => {
@@ -45,11 +46,9 @@ function App() {
     <>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className=" flex-grow w-full md:w-4/5 lg:w-1/2 mx-auto p-5 space-y-10">
+        <main className=" flex-grow w-full md:w-4/5 lg:w-2/3 mx-auto p-5 space-y-10">
           <Form addTodo={addTodo} />
-
           <Stats todos={todos} />
-
           <TodoList todos={todos} onToggle={onToggle} onDelete={onDelete} />
         </main>
         <Footer />

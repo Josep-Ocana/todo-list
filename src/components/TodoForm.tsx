@@ -27,7 +27,7 @@ const Form = ({ addTodo }: FormProps) => {
           {alerta}
         </div>
       )}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row gap-3">
         <input
           className=" p-3 border rounded-lg w-full "
           placeholder="Que necesitas hacer?"
@@ -35,11 +35,9 @@ const Form = ({ addTodo }: FormProps) => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <div className="">
-          <button className="bg-blue-500 text-white rounded-md w-40 ml-3 py-2">
-            + Añadir
-          </button>
-        </div>
+        <button className="bg-blue-500 text-white rounded-lg w-full sm:w-40 sm:ml-3 py-2">
+          + Añadir
+        </button>
       </div>
     </form>
   );
